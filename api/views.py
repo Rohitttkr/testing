@@ -6,7 +6,10 @@ from rest_framework import status
 
 def get_audio_info(song_name):
     # Cookies file ka path (jahan manage.py hai)
+    # views.py mein get_audio_info ke andar ye lines add karein:
     cookie_path = os.path.join(os.getcwd(), 'cookies.txt')
+    print(f"Checking cookies at: {cookie_path}")
+    print(f"File exists: {os.path.exists(cookie_path)}")
 
     ydl_opts = {
         # 'bestaudio/best' ki jagah ye format string use karein
