@@ -9,16 +9,16 @@ def get_audio_info(song_name):
     cookie_path = os.path.join(os.getcwd(), 'cookies.txt')
 
     ydl_opts = {
-            # 'bestaudio/best' ki jagah ye format string use karein
-            'format': 'bestaudio/best[ext=m4a]/best[ext=mp3]/best', 
-            'quiet': True,
-            'no_warnings': True,
-            'default_search': 'ytsearch1',
-            'noplaylist': True,
-            'nocheckcertificate': True,
-            'cookiefile': cookie_path if os.path.exists(cookie_path) else None,
-            'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-        }
+        # 'bestaudio/best' ki jagah ye format string use karein
+        'format': 'bestaudio/best[ext=m4a]/best[ext=mp3]/best', 
+        'quiet': True,
+        'no_warnings': True,
+        'default_search': 'ytsearch1',
+        'noplaylist': True,
+        'nocheckcertificate': True,
+        'cookiefile': cookie_path if os.path.exists(cookie_path) else None,
+        'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+    }
 
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
