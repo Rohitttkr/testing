@@ -12,15 +12,19 @@ def get_audio_info(song_name):
     print(f"File exists: {os.path.exists(cookie_path)}")
 
     ydl_opts = {
-        # 'bestaudio/best' ki jagah ye format string use karein
-        'format': 'bestaudio/best[ext=m4a]/best[ext=mp3]/best', 
+        'format': 'bestaudio/best',          # ← Yeh sabse safe aur recommended hai abhi
         'quiet': True,
         'no_warnings': True,
         'default_search': 'ytsearch1',
         'noplaylist': True,
         'nocheckcertificate': True,
         'cookiefile': cookie_path if os.path.exists(cookie_path) else None,
-        'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'postprocessors': [{                 # Optional: agar mp3 chahiye to convert kar dega
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '192',       # 192kbps ya 0 for best
+        }],
     }
 
     try:
